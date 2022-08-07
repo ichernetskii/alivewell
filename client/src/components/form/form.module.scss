@@ -1,0 +1,71 @@
+@import "style/variables.scss";
+@import "style/mixins.scss";
+@import "components/input-field/input-field.module.scss";
+@import "components/button/button.module.scss";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: $font-size-h4;
+
+  &__header {
+    width: 100%;
+    text-align: center;
+  }
+
+  &__subheader {
+    width: 100%;
+    text-align: center;
+  }
+
+  &__input {
+    width: 100%;
+    box-sizing: border-box;
+
+    &_error {
+      border: 3px solid #F66;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: $font-size-h4;
+
+    &_disabled {
+      background: #888;
+      box-shadow: none;
+    }
+  }
+
+  &__text-area {
+    width: 100%;
+    border-radius: 20px;
+    border: 3px solid $color-accent;
+    font-weight: $font-weight-regular;
+    padding: 20px 30px;
+    outline: none;
+    letter-spacing: 0.05em;
+    box-sizing: border-box;
+    resize: none;
+
+    &_error {
+      border: 3px solid #F44;
+    }
+
+    &::placeholder {
+      color: $color-text-unactive;
+      text-align: center;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: $font-size-h5;
+
+    &__button {
+      font-size: $font-size-h5;
+    }
+  }
+}

@@ -1,0 +1,207 @@
+@import "style/variables.scss";
+@import "components/breadcrumbs/breadcrumbs.module.scss";
+@import "components/form/form.module.scss";
+
+.contact-page {
+  margin: var(--header) 0 80px var(--page-margin);
+
+  @include media-styles("s") { margin-bottom: 60px }
+  @include media-styles("xs") { margin-bottom: 40px }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: $font-size-h3;
+
+    @include media-styles("s") {
+      font-size: $font-size-h4;
+    }
+  }
+
+  &__header {
+    flex: 0 1 100%;
+    margin-top: 0;
+    margin-bottom: 50px;
+  }
+}
+
+.form {
+  flex: 0 1 30%;
+  box-sizing: border-box;
+  padding: 0 5% 0 0;
+  justify-content: space-between;
+  font-size: inherit;
+
+  & > * {
+    margin-bottom: 20px;
+    &:last-child { margin-bottom: 0 }
+
+    @include media-styles("xs") {
+      max-width: 550px;
+    }
+  }
+
+  &__button {
+    width: 80%;
+    font-size: inherit;
+    min-height: 90px;
+  }
+
+  &__text-area {
+    height: 200px;
+  }
+
+  @include media-styles("m") {
+    order: 1;
+    flex: 0 1 100%;
+    margin-top: -50px;
+    margin-right: var(--page-margin);
+    padding: 0 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-gap: 20px 20px;
+
+    &__input {
+      margin: 0;
+    }
+
+    &__text-area {
+      height: auto;
+      align-self: stretch;
+      margin: 0;
+      grid-column: 2/3;
+      grid-row: 1/3;
+    }
+
+    &__button {
+      grid-column: 1/3;
+      justify-self: center;
+      width: 400px;
+    }
+  }
+
+  @include media-styles("s") {
+    order: 3;
+    display: flex;
+    margin-top: 0;
+    grid-gap: 0;
+
+    &__text-area { height: 150px }
+
+    & > * {
+      margin-bottom: 20px;
+      &:last-child { margin-bottom: 0 }
+    }
+  }
+
+  @include media-styles("xs") {
+    padding: 0;
+    align-items: center;
+
+    &__button { max-width: 450px; width: 100% }
+    &__text-area { align-self: center }
+  }
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 30%;
+  box-sizing: border-box;
+  padding: 0 5% 0 0;
+
+  &__data {
+    margin-bottom: 50px;
+
+    & > * {
+      margin-bottom: 30px;
+      &:last-child { margin-bottom: 0 }
+    }
+  }
+
+  &__address {
+    display: block;
+  }
+
+  &__phone {
+    display: block;
+    font-weight: $font-weight-bold;
+    color: $color-text;
+  }
+
+  &__email {
+    display: block;
+    color: $color-text;
+  }
+
+  &__schedule {
+    display: initial;
+
+    & > * {
+      margin-bottom: 30px;
+      &:last-child { margin-bottom: 0 }
+    }
+  }
+
+  @include media-styles("m") {
+    flex: 0 1 50%;
+  }
+
+  @include media-styles("s") {
+    flex: 0 1 100%;
+    order: 1;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &__data { flex: 0 1 45%; margin: 0 }
+    &__schedule { flex: 0 1 45% }
+  }
+
+  @include media-styles("xs") {
+    flex-direction: column;
+
+    &__data { margin-bottom: 30px }
+  }
+}
+
+.map {
+  flex: 0 1 calc(40% - 1px);
+  height: 550px;
+  filter: drop-shadow(0px 24px 18px rgba(48, 126, 165, 0.15));
+
+  @include media-styles("m") {
+    flex: 0 1 50%;
+    height: 500px;
+    position: relative;
+    top: -100px;
+  }
+
+  @include media-styles("s") {
+    flex: 0 1 100%;
+    order: 2;
+    position: static;
+    height: 400px;
+    max-height: calc(85vh - var(--header));
+    margin: 50px 0;
+  }
+
+  @include media-styles("xs") {
+    height: 300px;
+  }
+
+  [class="ymaps-2-1-78-inner-panes"], [class^="ymaps-2-1-78-map"] {
+    border-radius: 320px 0 0 320px !important;
+    overflow: hidden;
+  }
+
+  [class="ymaps-2-1-78-zoom"] {
+    @include media-styles("xs") {
+      top: 85px;
+    }
+  }
+
+  [class="ymaps-2-1-78-balloon__content"] > * {
+    text-align: center;
+  }
+}

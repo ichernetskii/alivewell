@@ -1,0 +1,65 @@
+@import "style/mixins.scss";
+
+// Fonts
+
+$font-family-comfortaa:         "ComfortaaVar", "Comfortaa", arial, sans-serif;
+$font-family-roboto:            "Roboto", arial, sans-serif;
+$font-family-base:              $font-family-roboto;
+
+$font-weight-thin:              100;
+$font-weight-extra-light:       200;
+$font-weight-light:             300;
+$font-weight-regular:           400;
+$font-weight-medium:            500;
+$font-weight-semi-bold:         600;
+$font-weight-bold:              700;
+$font-weight-extra-bold:        800;
+$font-weight-black:             900;
+$font-weight:                   $font-weight-regular;
+
+$font-size-base:                1rem;
+$font-size-large:               1.25 * $font-size-base;
+$font-size-small:               0.8  * $font-size-base;
+$font-size-logo:                0.75 * $font-size-base;
+$font-size-phone:               1.2  * $font-size-base;
+
+// Font headers size
+
+$font-size-h1-xxlarge:          4.5  * $font-size-base;
+$font-size-h1-xlarge:           3.6  * $font-size-base; // ~58px
+$font-size-h1-large:            2.9  * $font-size-base; //  48px
+$font-size-h1:                  2.23 * $font-size-base; // ~36px
+$font-size-h2:                  1.87 * $font-size-base; // ~30px
+$font-size-h3:                  1.6  * $font-size-base; // ~26px
+$font-size-h4:                  1.25 * $font-size-base; //  20px
+$font-size-h5:                  1    * $font-size-base; //  16px
+$font-size-h6:                  0.85 * $font-size-base; // ~14px
+$font-size-h6-small:            0.75 * $font-size-base; //  12px
+
+// Colors
+
+$color-accent:                  #00AAFF;
+$color-accent-2:                #01BA77;
+$color-text: #012446;
+$color-text-selection:          transparentize($color-accent, 0.2);
+$color-text-unactive:           #ACACAC;
+
+// Sizes
+
+:root {
+  --header:                     120px;
+  --page-margin:                100px;
+
+  @include media-styles("l") {
+    --page-margin:              40px;
+  }
+
+  @include media-styles("s") {
+    --page-margin:              30px;
+  }
+
+  @include media-styles("xs") {
+    --header:                   90px;
+    --page-margin:              20px;
+  }
+}

@@ -1,0 +1,53 @@
+@import "./variables.scss";
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.link, .link:visited {
+  text-decoration: none;
+
+  &:hover {
+    @media (pointer: fine) {
+      color: $color-accent;
+    }
+  }
+}
+
+.anchor {
+  display: block;
+  position: relative;
+  top: calc(-1*var(--header));
+  visibility: hidden;
+}
+
+.header {
+  font-family: $font-family-comfortaa;
+  font-size: $font-size-h1-xxlarge;
+  text-transform: uppercase;
+  margin-left: -0.1em;
+
+  @include media-styles("xl") {
+    font-size: $font-size-h1-xlarge;
+  }
+
+  @include media-styles("m") {
+    font-size: $font-size-h1-large;
+  }
+
+  @include media-styles("xs") {
+    font-size: $font-size-h2;
+  }
+}
+
+.breadcrumbs {
+  margin: 30px 0;
+
+  @include media-styles("s") {
+    margin: 25px 0;
+  }
+
+  @include media-styles("xs") {
+    margin: 20px 0;
+  }
+}

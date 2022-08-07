@@ -1,0 +1,87 @@
+@import "style/variables.scss";
+@import "style/mixins.scss";
+
+@import "components/form/form.module.scss";
+
+:root {
+  --animation-time: 0.4s;
+}
+
+.overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0);
+  transition:
+          background-color var(--animation-time) linear,
+          z-index          var(--animation-time) linear;
+
+  &_visible {
+    z-index: 100000;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    .modal {
+      right: 50%;
+      transform: translateX(50%) translateY(-50%);
+    }
+  }
+}
+
+.modal {
+  position: absolute;
+  right: 0;
+  transform: translateX(100%) translateY(-50%);
+  top: 50%;
+  box-sizing: border-box;
+  border-radius: 20px;
+  width: 90%;
+  height: 90%;
+  max-width: 600px;
+  max-height: 520px;
+  padding: 40px;
+  opacity: 1;
+  background-color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:
+          right     var(--animation-time) cubic-bezier(0.34, 1.56, 0.64, 1),
+          transform var(--animation-time) cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  &__form {
+    min-width: 80%;
+  }
+
+  &__close {
+    position: absolute;
+    font-family: serif;
+    right: 20px;
+    top: 20px;
+    overflow: hidden;
+    font-size: 70px;
+    font-weight: 300;
+    margin-bottom: 0;
+    line-height: 0.5em;
+    cursor: pointer;
+    color: $color-text;
+    user-select: none;
+    text-shadow: 1px 1px 3px rgba(159, 176, 191, 0.67);
+
+    &:hover {
+      text-shadow: 0 0 3px rgba(159, 176, 191, 0.67);
+    }
+  }
+}
+
+.form {
+  & > * {
+    margin-bottom: 15px;
+  }
+
+  .form__header {
+    margin-bottom: 15px;
+  }
+}

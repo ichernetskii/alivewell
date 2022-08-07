@@ -1,0 +1,5 @@
+[production]
+defaults
+IE 11
+
+[development]

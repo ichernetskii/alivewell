@@ -1,0 +1,50 @@
+@import "style/variables.scss";
+@import "components/modal/modal.module.scss";
+
+// + Выделение текста
+::selection {
+  background: $color-text-selection; /* Safari */
+}
+
+::-moz-selection {
+  background: $color-text-selection; /* Firefox */
+}
+// - Выделение текста*/
+
+:root {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app {
+  color: $color-text;
+  font-family: $font-family-base;
+  font-style: normal;
+  font-weight: $font-weight;
+  font-size: $font-size-base;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+@import "components/input-field/input-field.module.scss";
+@import "components/form/form.module.scss";
+@import "components/modal/modal.module.scss";
+
+@media screen and (max-height: 500px) {
+  .form__input {
+    padding: 10px 30px;
+  }
+
+  .form__text-area {
+    padding: 10px 30px;
+  }
+
+  .form__button {
+    padding: 15px 30px 10px 30px;
+    line-height: 1.15;
+  }
+}
