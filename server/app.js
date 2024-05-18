@@ -8,10 +8,10 @@ const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 
 // CONFIG
-process.env["NODE_CONFIG_DIR"] = path.resolve("server", "config");
+process.env["NODE_CONFIG_DIR"] = path.resolve("config");
 const cfg = require("config");
 const config = {
-    appPort: cfg.has("appPort") ? cfg.get("appPort") : 5002
+    appPort: cfg.has("appPort") ? cfg.get("appPort") : 5001
 }
 
 // Bruteforce security

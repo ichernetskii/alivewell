@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+    server:
+        build:
+            context: ./server
+            dockerfile: ./Dockerfile
+        ports:
+            - "5001:5001"
+        container_name: "ALIVEWELL_SERVER_CONTAINER"
+        volumes:
+            - ./server:/SERVER_APP
+            - /SERVER_APP/node_modules
+        networks:
+            - NETWORK
+        environment:
+            NODE_ENV: development
+    client:
+        build:
+            context: ./client
+            dockerfile: ./Dockerfile.development
+        ports:
+            - "4200:4200"
+        container_name: "ALIVEWELL_CLIENT_CONTAINER"
+        networks:
+            - NETWORK
+        volumes:
+            - ./client/src:/var/www/CLIENT_APP/src
+            - /var/www/CLIENT_APP/node_modules
+networks:
+    NETWORK:
+        name: NETWORK

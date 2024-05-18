@@ -266,39 +266,26 @@ module.exports = (env = {}) => {
         mode: isProd ? "production" : "development",
         devServer: {
             open: true,
-            port: 4200,
-            disableHostCheck: true,
             proxy: {
                 "/api": {
-                    target: "http://localhost:5002"
-                },
-                "/*/**": {
-                    pathRewrite: function (path, req) {
-                        const index = req.rawHeaders.findIndex(item => item === "Referer");
-                        if (index === -1) return ""; // not found header
-                        const u = req.rawHeaders[index + 1].replace(/\/[^\/]*$/, "");
-                        const url = new URL(u);
-                        const pathName = url.pathname;
-                        return req.url.replace(pathName, "");
-                    },
-                    target: "http://localhost:4200",
-                    changeOrigin: false
+                    target: "http://ALIVEWELL_SERVER_CONTAINER:5001"
                 }
             },
-            publicPath: "/",
-            overlay: {
-                warnings: true,
-                errors: true
+            historyApiFallback: true,
+            port: 4200,
+            hot: true,
+            host: "0.0.0.0",
+            watchOptions: {
+                poll: 1000,
             },
-            historyApiFallback: true
         },
         entry: {
             main: fixSlashes("./" + path.join(paths.folders.js, "index.js"))
         },
         output: {
             path: isProd ? paths.dist.release.abs : paths.dist.debug.abs,
-            publicPath: "./",
-            filename: fixSlashes(path.join(paths.folders.js, getFilenameTemplate("[name]", "fullhash", "js")))
+            filename: fixSlashes(path.join(paths.folders.js, getFilenameTemplate("[name]", "fullhash", "js"))),
+            hashFunction: "xxhash64",
         },
         module: {
             rules: [
